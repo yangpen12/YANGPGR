@@ -1,0 +1,1179 @@
+app:
+  description: 故事工厂·AI创作 v3.1 — 分段迭代+结构化评审+设定清单+精确字数
+  icon: book
+  icon_background: '#F0F7FF'
+  icon_type: emoji
+  mode: workflow
+  name: 故事工厂 · AI创作 v3.1
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .txt
+      - .md
+      allowed_file_types:
+      - document
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: '欢迎使用故事工厂 v3.1！
+
+      请输入创作参数：目标字数、故事类型、背景、世界观、主角名字。
+
+      可选：叙事视角、文风偏好、硬性约束。'
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1000000000001-source-1000000000002-target
+      source: '1000000000001'
+      sourceHandle: source
+      target: '1000000000002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000002-source-1000000000003-target
+      source: '1000000000002'
+      sourceHandle: source
+      target: '1000000000003'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1000000000003-source-1000000000004-target
+      source: '1000000000003'
+      sourceHandle: source
+      target: '1000000000004'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1000000000004-source-2000000000001-target
+      source: '1000000000004'
+      sourceHandle: source
+      target: '2000000000001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: code
+      id: 1000000000004-source-1000000000010-target
+      source: '1000000000004'
+      sourceHandle: source
+      target: '1000000000010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '2000000000001'
+        sourceType: iteration-start
+        targetType: llm
+      id: 2000000000002start-source-2000000000005-target
+      source: 2000000000002start
+      sourceHandle: source
+      target: '2000000000005'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 2000000000001-source-1000000000006-target
+      source: '2000000000001'
+      sourceHandle: source
+      target: '1000000000006'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1000000000006-source-1000000000014-target
+      source: '1000000000006'
+      sourceHandle: source
+      target: '1000000000014'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000014-source-1000000000007-target
+      source: '1000000000014'
+      sourceHandle: source
+      target: '1000000000007'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000014-source-1000000000008-target
+      source: '1000000000014'
+      sourceHandle: source
+      target: '1000000000008'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000014-source-1000000000009-target
+      source: '1000000000014'
+      sourceHandle: source
+      target: '1000000000009'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000007-source-1000000000011-target
+      source: '1000000000007'
+      sourceHandle: source
+      target: '1000000000011'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000008-source-1000000000011-target
+      source: '1000000000008'
+      sourceHandle: source
+      target: '1000000000011'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000009-source-1000000000011-target
+      source: '1000000000009'
+      sourceHandle: source
+      target: '1000000000011'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1000000000010-source-1000000000011-target
+      source: '1000000000010'
+      sourceHandle: source
+      target: '1000000000011'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1000000000011-source-1000000000012-target
+      source: '1000000000011'
+      sourceHandle: source
+      target: '1000000000012'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1000000000012-source-1000000000013-target
+      source: '1000000000012'
+      sourceHandle: source
+      target: '1000000000013'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1000000000013-source-1000000000016-target
+      source: '1000000000013'
+      sourceHandle: source
+      target: '1000000000016'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1000000000016-source-1000000000017-target
+      source: '1000000000016'
+      sourceHandle: source
+      target: '1000000000017'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 输入故事创作参数
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 目标字数
+          max_length: 10
+          options: []
+          required: true
+          type: number
+          variable: word_count
+          default: '3000'
+        - label: 故事类型
+          max_length: 50
+          options:
+          - 玄幻
+          - 科幻
+          - 悬疑
+          - 言情
+          - 武侠
+          - 都市
+          - 奇幻
+          - 历史
+          - 历史架空
+          - 恐怖
+          - 校园
+          - 末日
+          - 仙侠
+          required: true
+          type: select
+          variable: genre
+          default: 玄幻
+        - label: 故事背景
+          max_length: 500
+          options: []
+          required: true
+          type: paragraph
+          variable: setting
+          default: 一个名为"青云大陆"的修仙世界，宗门林立，强者为尊。主角出生于偏远小城的普通家族。
+        - label: 世界观设定
+          max_length: 1000
+          options: []
+          required: true
+          type: paragraph
+          variable: worldview
+          default: '修炼体系：练气→筑基→金丹→元婴→化神→渡劫。宗门势力：正道三大宗门（天剑宗、丹霞阁、玄音谷），魔道两宗（血煞宗、影月门）。货币：灵石。特殊设定：存在远古遗迹和秘境。'
+        - label: 主角名字
+          max_length: 50
+          options: []
+          required: true
+          type: text-input
+          variable: protagonist_name
+          default: 林逸
+        - label: 叙事视角
+          max_length: 50
+          options:
+          - 第三人称全知
+          - 第三人称限制（主角视角）
+          - 第一人称（主角）
+          - 第一人称（旁观者）
+          required: false
+          type: select
+          variable: narrative_pov
+          default: 第三人称限制（主角视角）
+        - label: 文风偏好
+          max_length: 200
+          options: []
+          required: false
+          type: paragraph
+          variable: style_preference
+          default: 节奏明快，情节紧凑，注重战斗场面描写
+        - label: 硬性约束
+          max_length: 300
+          options: []
+          required: false
+          type: paragraph
+          variable: hard_constraints
+          default: 主角必须有机遇奇遇，但不能一帆风顺
+      height: 450
+      id: '1000000000001'
+      position:
+        x: 30
+        y: 250
+      positionAbsolute:
+        x: 30
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 根据创作参数生成结构化故事大纲
+        model:
+          completion_params:
+            temperature: 0.7
+            max_tokens: 4096
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-outline
+          role: system
+          text: "你是一位顶级的故事架构师，擅长构建引人入胜的故事大纲。\n\n**任务要求：**\n1. **理解参数：** 仔细理解用户提供的所有创作参数。\n2. **规划结构：** 根据目标字数规划合理的故事结构（起承转合），确保节奏紧凑。\n3. **设计冲突：** 设计 2-3 个核心冲突。\n4. **塑造角色：** 围绕主角设计关键配角，明确角色关系。\n5. **伏笔布局：** 标注关键伏笔和反转点。\n\n**设定边界（关键）：**\n- **硬设定**（必须严格遵守）：用户提供的世界观规则、主角名字、故事背景、硬性约束。\n- **软背景**（可合理创作）：配角名字（大纲中需设计）、地名（需与世界观风格一致）、环境细节。\n- 不得虚构超出用户设定范围的规则体系或历史事件。\n\n**输出格式（严格JSON）：**\n```json\n{\n  \"title\": \"故事标题\",\n  \"theme\": \"核心主题\",\n  \"logline\": \"一句话简介\",\n  \"characters\": {\n    \"protagonist\": {\"name\": \"...\", \"description\": \"...\", \"motivation\": \"...\", \"arc\": \"...\"},\n    \"supporting\": [{\"name\": \"...\", \"role\": \"...\", \"relationship\": \"...\"}]\n  },\n  \"named_entities\": {\"places\": [\"地名1\",\"地名2\"], \"organizations\": [], \"abilities\": []},\n  \"plot_structure\": [\n    {\"act\": 1, \"name\": \"第一幕：开端\", \"description\": \"...\", \"key_events\": [\"事件1\",\"事件2\"], \"word_ratio\": \"20%\"},\n    {\"act\": 2, \"name\": \"第二幕：发展\", \"description\": \"...\", \"key_events\": [...], \"word_ratio\": \"30%\"},\n    {\"act\": 3, \"name\": \"第三幕：高潮\", \"description\": \"...\", \"key_events\": [...], \"word_ratio\": \"30%\"},\n    {\"act\": 4, \"name\": \"第四幕：结局\", \"description\": \"...\", \"key_events\": [...], \"word_ratio\": \"20%\"}\n  ],\n  \"foreshadowing\": [\"伏笔1\",\"伏笔2\"],\n  \"writing_guidelines\": {\"tone\": \"...\", \"pace\": \"...\", \"key_atmospheres\": [\"...\"]}\n}\n```\n\n**注意：** 世界观贯穿始终，主角是核心驱动者，按字数分配各幕比例。\n**重要：只输出JSON，不要输出其他任何内容。**"
+        - id: user-outline
+          role: user
+          text: '请根据以下参数生成故事大纲：
+
+
+            - **目标字数：** {{#1000000000001.word_count#}} 字
+
+            - **故事类型：** {{#1000000000001.genre#}}
+
+            - **故事背景：** {{#1000000000001.setting#}}
+
+            - **世界观设定：** {{#1000000000001.worldview#}}
+
+            - **主角名字：** {{#1000000000001.protagonist_name#}}
+
+            - **叙事视角：** {{#1000000000001.narrative_pov#}}
+
+            - **文风偏好：** {{#1000000000001.style_preference#}}
+
+            - **硬性约束：** {{#1000000000001.hard_constraints#}}'
+        selected: false
+        title: 大纲生成
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000002'
+      position:
+        x: 334
+        y: 250
+      positionAbsolute:
+        x: 334
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 结构化审核大纲质量，输出通过/不通过及具体问题
+        model:
+          completion_params:
+            temperature: 0.3
+            max_tokens: 2048
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-outline-check
+          role: system
+          text: "你是一位严格的稿件审核编辑，负责验证故事大纲的质量。请按以下维度评估大纲，输出结构化的审查结果。\n\n**审核维度：**\n1. **结构完整性：** 四幕结构是否齐全？每幕有关键事件吗？字数比例加起来是否为100%？\n2. **角色合理性：** 主角动机是否清晰？成长弧线是否合理？配角是否必要？\n3. **冲突设计：** 核心冲突是否明确？是否有递进关系？\n4. **设定一致性：** 是否有与用户世界观矛盾的内容？named_entities 是否与世界观风格一致？\n5. **可行性：** 在目标字数内能否完成这个大纲？是否存在情节过于复杂的问题？\n\n**输出格式（严格JSON）：**\n```json\n{\n  \"pass\": true,\n  \"score\": 8,\n  \"issues\": [\n    {\"severity\": \"critical\", \"category\": \"结构\", \"description\": \"问题描述\", \"suggestion\": \"修改建议\"}\n  ],\n  \"strengths\": [\"优点1\",\"优点2\"]\n}\n```\n\n- `pass`: true=通过(仅含建议级问题)，false=不通过(含严重问题)\n- `score`: 1-10分\n- `severity`: critical=必须修复, suggestion=建议优化\n**重要：只输出JSON，不要输出其他任何内容。**"
+        - id: user-outline-check
+          role: user
+          text: '**创作参数：**
+
+            - 目标字数：{{#1000000000001.word_count#}} 字
+
+            - 故事类型：{{#1000000000001.genre#}}
+
+            - 世界观设定：{{#1000000000001.worldview#}}
+
+            - 主角名字：{{#1000000000001.protagonist_name#}}
+
+            - 硬性约束：{{#1000000000001.hard_constraints#}}
+
+
+            **待审核大纲：**
+
+            {{#1000000000002.text#}}'
+        selected: false
+        title: 大纲校验
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000003'
+      position:
+        x: 638
+        y: 250
+      positionAbsolute:
+        x: 638
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\ndef main(arg1: str, arg2: str) -> dict:\n    \"\"\"arg1=大纲JSON, arg2=字数，生成包含完整提示的段落数组\"\"\"\n    try:\n        outline = json.loads(arg1)\n    except:\n        outline = {\"plot_structure\": [\n            {\"act\":1,\"name\":\"第一幕\",\"description\":\"开端\",\"key_events\":[\"事件\"],\"word_ratio\":\"25%\"},\n            {\"act\":2,\"name\":\"第二幕\",\"description\":\"发展\",\"key_events\":[\"事件\"],\"word_ratio\":\"25%\"},\n            {\"act\":3,\"name\":\"第三幕\",\"description\":\"高潮\",\"key_events\":[\"事件\"],\"word_ratio\":\"25%\"},\n            {\"act\":4,\"name\":\"第四幕\",\"description\":\"结局\",\"key_events\":[\"事件\"],\"word_ratio\":\"25%\"}\n        ]}\n    target = int(arg2) if arg2 else 5000\n    acts = outline.get(\"plot_structure\", [])\n    if not acts:\n        acts = [{\"act\":i+1,\"name\":f\"第{i+1}幕\",\"description\":\"\",\"key_events\":[],\"word_ratio\":\"25%\"} for i in range(4)]\n    total_acts = len(acts)\n    segments = []\n    for i, a in enumerate(acts):\n        ratio = a.get(\"word_ratio\",\"25%\").replace(\"%\",\"\")\n        try:\n            pct = float(ratio) / 100\n        except:\n            pct = 0.25\n        target_words = int(target * pct)\n        # 构建完整的提示文本\n        prompt = f\"\"\"**完整大纲：**\n{arg1}\n\n**当前幕信息：**\n- 第 {i+1} 幕（共 {total_acts} 幕）\n- 幕名：{a.get('name','')}\n- 描述：{a.get('description','')}\n- 关键事件：{json.dumps(a.get('key_events',[]), ensure_ascii=False)}\n- 目标字数：{target_words} 字\n\n**写作指令：**\n请根据以上信息撰写当前幕的故事内容。\n- 目标字数：{target_words} 字\n- 严格遵循大纲中各幕的逻辑顺序和情节衔接\n- **只输出当前幕的故事正文**\"\"\"\n        segments.append(prompt)\n    result = {\"segments\": segments, \"outline_json\": arg1}\n    return result\n"
+        desc: 将大纲按幕拆分为迭代数组，计算各幕目标字数
+        code_language: python3
+        outputs:
+          segments:
+            children: null
+            type: array[string]
+          outline_json:
+            children: null
+            type: string
+        selected: false
+        title: 分段拆分
+        type: code
+        variables:
+        - value_selector:
+          - '1000000000003'
+          - text
+          value_type: string
+          variable: arg1
+        - value_selector:
+          - '1000000000001'
+          - word_count
+          value_type: string
+          variable: arg2
+      height: 80
+      id: '1000000000004'
+      position:
+        x: 942
+        y: 250
+      positionAbsolute:
+        x: 942
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: 按幕迭代生成故事段落，每幕接收前序内容保持连贯
+        is_parallel: false
+        iterator_selector:
+        - '1000000000004'
+        - segments
+        iterator_input_type: array[string]
+        output_type: array[string]
+        output_selector:
+        - '2000000000005'
+        - text
+        start_node_id: 2000000000002start
+        type: iteration
+        selected: false
+        title: 分段写入
+      height: 200
+      id: '2000000000001'
+      position:
+        x: 1246
+        y: 250
+      positionAbsolute:
+        x: 1246
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 300
+    - data:
+        type: iteration-start
+        isInIteration: true
+        title: 迭代开始
+        desc: 迭代起始
+        selected: false
+      height: 50
+      id: 2000000000002start
+      parentId: '2000000000001'
+      position:
+        x: 150
+        y: 100
+      positionAbsolute:
+        x: 1396
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 200
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 按幕迭代写入故事段落，接收前序内容保持连贯
+        model:
+          completion_params:
+            temperature: 0.85
+            max_tokens: 4096
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: iter-sys-writer
+          role: system
+          text: '你是一位才华横溢的小说家。你正在逐幕撰写一个故事。每次你只写一幕，但你必须保持与前后文的高度连贯。
+
+
+            **设定边界（关键）：**
+
+            - **硬设定**（绝对不可违反）：大纲中定义的角色名、性格、动机、关系、地名、组织名、能力体系。
+
+            - **软背景**（允许合理创作）：环境细节描写、路人角色、氛围渲染、感官体验。合理创作可以丰富故事世界。
+
+            - **禁止项**：不得改变角色核心关系、不得引入新的关键角色、不得添加新剧情线。
+
+
+            **连贯性规则：**
+
+            - 如果有前文，必须在前文的基础上自然延续。角色状态（位置、情绪、持有物）必须连续。
+
+            - 上一幕结尾的场景状态必须在下一幕开头保持一致。
+
+            - 时间线必须连贯，不得跳跃或倒退。
+
+
+            **写作技巧：**
+
+            - **Show, Don''t Tell**：用场景和细节展示，而非直接叙述。
+
+            - **五感描写**：视觉、听觉、触觉、嗅觉、味觉。
+
+            - **对话自然**：符合角色身份，推动剧情。
+
+            - **节奏变化**：高潮短句密集，抒情舒缓。
+
+
+            **统一格式规范：**
+
+            - 旁白直接书写。
+
+            - 角色内心活动用 *斜体* 包裹。
+
+            - 对话用「」包裹。
+
+            - 场景转换时用空行分隔。
+
+            - **不要**包含任何标题、说明、注释，只输出纯故事正文。'
+        - id: iter-user-writer
+          role: user
+          text: '{{#2000000000001.item#}}'
+        selected: false
+        title: 分段写入
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '2000000000005'
+      parentId: '2000000000001'
+      position:
+        x: 500
+        y: 100
+      positionAbsolute:
+        x: 1746
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: list) -> dict:\n    \"\"\"arg1=迭代输出的段落数组\"\"\"\n    if not arg1:\n        return {\"result\": \"生成失败：未产出任何段落。\"}\n    merged = \"\\n\\n\".join(arg1)\n    return {\"result\": merged}\n"
+        desc: 将迭代生成的各幕段落合并为完整故事
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 合并段落
+        type: code
+        variables:
+        - value_selector:
+          - '2000000000001'
+          - output
+          value_type: array[string]
+          variable: arg1
+      height: 80
+      id: '1000000000006'
+      position:
+        x: 1550
+        y: 250
+      positionAbsolute:
+        x: 1550
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 统一调整各幕之间的衔接，消除割裂感，确保故事整体连贯
+        model:
+          completion_params:
+            temperature: 0.5
+            max_tokens: 16384
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-coherence
+          role: system
+          text: "你是一位资深文学编辑，专精于故事连贯性润色。你的任务是将分段生成的故事整合为一个流畅连贯的整体。\n\n**任务目标：**\n1. 消除各幕之间的割裂感，使过渡自然\n2. 检查并修复时间线、角色行为、场景描述的前后矛盾\n3. 统一叙事风格和语言风格\n4. 补充必要的过渡语句和心理活动\n\n**重要约束：**\n- **不得改变核心情节**，只调整衔接和过渡\n- **不得添加新角色或新设定**\n- 保留原有的精彩描写，只做必要调整\n- 输出完整的故事正文，不要输出修改说明\n\n**格式规范：**\n- 旁白直接书写\n- 内心活动用 *斜体*\n- 对话用「」\n- 场景转换用空行分隔"
+        - id: user-coherence
+          role: user
+          text: '**完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **分段生成的故事全文：**
+
+            {{#1000000000006.result#}}
+
+
+            请对以上故事进行连贯性润色，消除各幕之间的割裂感，确保故事流畅连贯。直接输出润色后的完整故事正文。'
+        selected: false
+        title: 连贯性润色
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000014'
+      position:
+        x: 1854
+        y: 250
+      positionAbsolute:
+        x: 1854
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 结构化评审：情节连贯性、冲突、伏笔、幻觉检测
+        model:
+          completion_params:
+            temperature: 0.3
+            max_tokens: 4096
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-review-plot
+          role: system
+          text: "你是一位资深文学编辑，专精于故事情节的逻辑性和连贯性。请对故事进行严格审查。\n\n**评审维度：**\n1. 剧情连贯性（因果、时间线、前后一致性）\n2. 冲突设计与化解\n3. 伏笔的埋设与回收\n4. 节奏把控\n\n**幻觉检测（对比大纲）：**\n- 检查是否有大纲中不存在的**关键角色名、地名、组织名**出现（环境描写中的泛称不算）\n- 检查是否有与大纲**矛盾的**情节、角色关系或世界观设定\n- 检查是否有大纲中**未规划的**新剧情线或重大转折\n\n**输出格式（严格JSON）：**\n```json\n{\n  \"hallucinations\": [\n    {\"location\": \"出现位置\", \"type\": \"角色名/地名/情节/设定\", \"found\": \"实际内容\", \"expected\": \"大纲要求\"}\n  ],\n  \"issues\": [\n    {\"location\": \"位置\", \"severity\": \"high/medium/low\", \"category\": \"连贯性/冲突/伏笔/节奏\",\n     \"description\": \"问题描述\", \"suggestion\": \"具体修改建议\"}\n  ],\n  \"strengths\": [\"优点\"]\n}\n```\n**重要：只输出JSON。如果没有问题，hallucinations和issues为空数组。**"
+        - id: user-review-plot
+          role: user
+          text: '**创作参数：**
+
+            - 类型：{{#1000000000001.genre#}}，视角：{{#1000000000001.narrative_pov#}}
+
+            - 硬性约束：{{#1000000000001.hard_constraints#}}
+
+
+            **完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **故事全文：**
+
+            {{#1000000000014.text#}}'
+        selected: false
+        title: 情节逻辑评审
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000007'
+      position:
+        x: 1854
+        y: 80
+      positionAbsolute:
+        x: 1854
+        y: 80
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 结构化评审：角色一致性、对话质量、幻觉检测
+        model:
+          completion_params:
+            temperature: 0.3
+            max_tokens: 4096
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-review-char
+          role: system
+          text: "你是一位资深文学编辑，专精于角色塑造和对话质量。请对故事进行细致审查。\n\n**评审维度：**\n1. 角色一致性（性格、行为、语言风格全文一致）\n2. 对话质量（自然、有区分度、推动剧情）\n3. 角色深度（是否有层次感）\n4. 人物关系发展是否自然\n\n**幻觉检测（对比大纲）：**\n- 角色行为是否符合大纲的性格描述和动机？\n- 是否出现大纲未列出的有名字的角色？\n- 角色关系是否与大纲一致？\n\n**输出格式（严格JSON）：**\n```json\n{\n  \"hallucinations\": [\n    {\"location\": \"出现位置\", \"type\": \"角色名/行为偏差/关系偏差\", \"found\": \"实际内容\", \"expected\": \"大纲要求\"}\n  ],\n  \"issues\": [\n    {\"location\": \"位置\", \"severity\": \"high/medium/low\", \"category\": \"一致性/对话/深度/关系\",\n     \"description\": \"问题描述\", \"suggestion\": \"具体修改建议\"}\n  ],\n  \"strengths\": [\"优点\"]\n}\n```\n**重要：只输出JSON。**"
+        - id: user-review-char
+          role: user
+          text: '**创作参数：**
+
+            - 类型：{{#1000000000001.genre#}}，视角：{{#1000000000001.narrative_pov#}}
+
+            - 硬性约束：{{#1000000000001.hard_constraints#}}
+
+
+            **完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **故事全文：**
+
+            {{#1000000000014.text#}}'
+        selected: false
+        title: 人物塑造评审
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000008'
+      position:
+        x: 1854
+        y: 280
+      positionAbsolute:
+        x: 1854
+        y: 280
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 结构化评审：文风表现力、氛围营造、格式规范、幻觉检测
+        model:
+          completion_params:
+            temperature: 0.3
+            max_tokens: 4096
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-review-style
+          role: system
+          text: "你是一位资深文学评论家，专精于文学质量和风格表现。请对故事进行全面审查。\n\n**评审维度：**\n1. 类型契合度和氛围营造\n2. 文风表现力（用词、句式、修辞）\n3. 叙事技巧（视角一致性、节奏、信息披露）\n4. 开篇与结尾的力度\n5. 格式规范性（标点、分段、对话格式）\n\n**幻觉检测：**\n- 环境描写是否与世界观设定一致？\n- 是否有不符合时代背景的元素？\n- 地理空间移动是否合理？\n\n**输出格式（严格JSON）：**\n```json\n{\n  \"hallucinations\": [\n    {\"location\": \"出现位置\", \"type\": \"环境/时代/地理\", \"found\": \"实际内容\", \"expected\": \"大纲要求\"}\n  ],\n  \"issues\": [\n    {\"location\": \"位置\", \"severity\": \"high/medium/low\", \"category\": \"氛围/文风/叙事/格式\",\n     \"description\": \"问题描述\", \"suggestion\": \"具体修改建议\"}\n  ],\n  \"strengths\": [\"优点\"]\n}\n```\n**重要：只输出JSON。**"
+        - id: user-review-style
+          role: user
+          text: '**创作参数：**
+
+            - 类型：{{#1000000000001.genre#}}，视角：{{#1000000000001.narrative_pov#}}
+
+            - 硬性约束：{{#1000000000001.hard_constraints#}}
+
+
+            **完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **故事全文：**
+
+            {{#1000000000014.text#}}'
+        selected: false
+        title: 文风氛围评审
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000009'
+      position:
+        x: 1854
+        y: 480
+      positionAbsolute:
+        x: 1854
+        y: 480
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\ndef main(arg1: str) -> dict:\n    \"\"\"从大纲JSON提取所有专有名词作为设定清单\"\"\"\n    try:\n        data = json.loads(arg1)\n    except:\n        return {\"checklist\": \"{}\"}\n    names = set()\n    chars = data.get(\"characters\", {})\n    p = chars.get(\"protagonist\", {})\n    if p.get(\"name\"): names.add(p[\"name\"])\n    for s in chars.get(\"supporting\", []):\n        if s.get(\"name\"): names.add(s[\"name\"])\n    ne = data.get(\"named_entities\", {})\n    for key in [\"places\", \"organizations\", \"abilities\"]:\n        for item in ne.get(key, []):\n            names.add(item)\n    if data.get(\"title\"): names.add(data[\"title\"])\n    checklist = json.dumps(sorted(names), ensure_ascii=False)\n    return {\"checklist\": checklist}\n"
+        desc: 从大纲JSON中提取所有专有名词，供后续节点精确对照
+        code_language: python3
+        outputs:
+          checklist:
+            children: null
+            type: string
+        selected: false
+        title: 设定清单提取
+        type: code
+        variables:
+        - value_selector:
+          - '1000000000004'
+          - outline_json
+          variable: arg1
+      height: 80
+      id: '1000000000010'
+      position:
+        x: 1246
+        y: 80
+      positionAbsolute:
+        x: 1246
+        y: 80
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 整合结构化评审意见，优先修复幻觉，精确改进故事
+        model:
+          completion_params:
+            temperature: 0.5
+            max_tokens: 8192
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-merge
+          role: system
+          text: "你是一位资深文学编辑和小说家，擅长整合多方评审意见对文本进行精确改进。\n\n**修复优先级（从高到低）：**\n1. **幻觉问题（最高优先级）**：严格按 hallucinations 数组逐一修复。\n   - 修正错误的专有名词（对照设定清单逐字核对）\n   - 删除不应存在的角色/地名/情节\n   - 修正与大纲矛盾的描述\n2. **高严重度问题（high）**：必须修复的情节/人物/文风问题。\n3. **中低严重度问题**：尽量修复。\n\n**设定边界：**\n- **硬设定**（不可违反）：设定清单中的专有名词、大纲角色关系、世界观规则、硬性约束。\n- **软背景**（允许创作）：环境细节、路人、氛围描写、感官体验。\n\n**连贯性规则：**\n- 修改一段时检查与前后文的衔接\n- 角色状态（位置、情绪、持有物）保持连续\n- 时间线不可打乱\n\n**格式规范：**\n- 旁白直接书写\n- 内心活动用 *斜体* 包裹\n- 对话用「」包裹\n- 场景转换用空行分隔\n- 不包含标题、说明、注释\n\n**输出要求：**\n1. 改进后的 Markdown 格式故事正文。\n2. ===修改说明===（列出主要修改点及依据，特别是幻觉修复情况）。"
+        - id: user-merge
+          role: user
+          text: '**设定清单（所有合法专有名词）：**
+
+            {{#1000000000010.checklist#}}
+
+
+            **完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **当前故事全文：**
+
+            {{#1000000000014.text#}}
+
+
+            **情节逻辑评审结果：**
+
+            {{#1000000000007.text#}}
+
+
+            **人物塑造评审结果：**
+
+            {{#1000000000008.text#}}
+
+
+            **文风氛围评审结果：**
+
+            {{#1000000000009.text#}}'
+        selected: false
+        title: 综合改进
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000011'
+      position:
+        x: 2158
+        y: 250
+      positionAbsolute:
+        x: 2158
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\ndef main(arg1: str, arg2: str) -> dict:\n    \"\"\"arg1=故事文本, arg2=目标字数\"\"\"\n    text = arg1 or \"\"\n    sep = \"\\n===修改说明===\"\n    if sep in text:\n        text = text.split(sep)[0].strip()\n    chinese_chars = len(re.findall(r\"[\\u4e00-\\u9fff\\u3000-\\u303f\\uff00-\\uffef]\", text))\n    english_words = len(re.findall(r\"[a-zA-Z]+\", text))\n    digits = len(re.findall(r\"\\d+\", text))\n    total = chinese_chars + english_words + digits\n    target = int(arg2) if arg2 else 5000\n    diff = total - target\n    pct = round(diff / target * 100, 1) if target > 0 else 0\n    return {\"actual_count\": total, \"target_count\": target, \"diff\": diff, \"pct\": pct}\n"
+        desc: 精确统计故事字数（中文字符+英文单词+数字）
+        code_language: python3
+        outputs:
+          actual_count:
+            children: null
+            type: number
+          target_count:
+            children: null
+            type: number
+          diff:
+            children: null
+            type: number
+          pct:
+            children: null
+            type: number
+        selected: false
+        title: 字数统计
+        type: code
+        variables:
+        - value_selector:
+          - '1000000000011'
+          - text
+          value_type: string
+          variable: arg1
+        - value_selector:
+          - '1000000000001'
+          - word_count
+          value_type: string
+          variable: arg2
+      height: 80
+      id: '1000000000012'
+      position:
+        x: 2462
+        y: 250
+      positionAbsolute:
+        x: 2462
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 基于精确字数统计进行扩写或精简
+        model:
+          completion_params:
+            temperature: 0.5
+            max_tokens: 8192
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-calibrate
+          role: system
+          text: '你是一位专业的文字编辑，专精于精确的字数控制。
+
+
+            **当前字数信息：**
+
+            - 实际字数：{{#1000000000012.actual_count#}}
+
+            - 目标字数：{{#1000000000012.target_count#}}
+
+            - 差距：{{#1000000000012.diff#}} 字（{{#1000000000012.pct#}}%）
+
+
+            **校准策略：**
+
+            - 如果差距在 ±5% 以内：直接输出原文，不做改动。
+
+            - 不足时：在薄弱段落**深化已有情节**（增加细节描写、扩展对话、铺垫高潮），绝不新增角色或情节线。
+
+            - 超标时：精简冗余描写和重复表达，绝不删减关键情节。
+
+
+            **设定边界：**
+
+            - 不得引入新的关键角色、地名或设定。
+
+            - 不得改变已有的情节走向和人物关系。
+
+
+            **格式规范：**
+
+            - 旁白直接书写，内心活动用 *斜体*，对话用「」
+
+            - 不包含标题、说明、注释
+
+
+            **输出要求：**
+
+            1. 校准后的 Markdown 格式故事正文。
+
+            2. ===字数说明===（校准措施简述）。'
+        - id: user-calibrate
+          role: user
+          text: '**完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **当前故事：**
+
+            {{#1000000000011.text#}}
+
+
+            **字数信息：**
+
+            - 实际：{{#1000000000012.actual_count#}} 字
+
+            - 目标：{{#1000000000012.target_count#}} 字
+
+            - 差距：{{#1000000000012.pct#}}%'
+        selected: false
+        title: 字数校准
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000013'
+      position:
+        x: 2766
+        y: 250
+      positionAbsolute:
+        x: 2766
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 最终润色、一致性检查、格式规范化和幻觉扫描
+        model:
+          completion_params:
+            temperature: 0.4
+            max_tokens: 8192
+          mode: chat
+          name: qwen3.5-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: sys-polish
+          role: system
+          text: "你是一位资深文学编辑和校对员，执行最终润色和一致性检查。\n\n**任务：**\n1. **语言精炼**：替换更精准的词语，消除重复用词。\n2. **一致性检查**：专有名词、风格、时间线、角色特征、标点格式。\n3. **格式规范**：\n   - 旁白直接书写\n   - 内心活动用 *斜体*\n   - 对话用「」\n   - 场景转换用空行\n4. **最终质量把关**：错别字、语病、逻辑漏洞。\n\n**设定清单（合法专有名词）：**\n{{#1000000000010.checklist#}}\n\n**最终幻觉扫描：**\n- 对照设定清单，检查所有专有名词是否一致\n- 检查是否有与世界观矛盾的描述\n\n**重要约束：** 此阶段只做微调。如发现严重问题，在修改说明中指出但不直接修改。\n\n**输出要求：**\n1. 润色后的 Markdown 格式故事正文。\n2. ===修改说明===（列出修改点及理由）。"
+        - id: user-polish
+          role: user
+          text: '**完整大纲：**
+
+            {{#1000000000004.outline_json#}}
+
+
+            **当前故事：**
+
+            {{#1000000000013.text#}}
+
+
+            **目标字数：** {{#1000000000012.target_count#}} 字'
+        selected: false
+        title: 最终润色
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 137
+      id: '1000000000016'
+      position:
+        x: 3070
+        y: 250
+      positionAbsolute:
+        x: 3070
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: 输出最终生成的故事
+        outputs:
+        - value_selector:
+          - '1000000000014'
+          - text
+          variable: result
+        selected: false
+        title: 结束
+        type: end
+      height: 116
+      id: '1000000000017'
+      position:
+        x: 3374
+        y: 250
+      positionAbsolute:
+        x: 3374
+        y: 250
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+  rag_pipeline_variables: []
